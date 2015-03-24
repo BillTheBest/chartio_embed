@@ -55,3 +55,9 @@ class UserListView(LoginRequiredMixin, ListView):
     # These next two lines tell the view to index lookups by username
     slug_field = "username"
     slug_url_kwarg = "username"
+
+    def get_context_data(self, **kwargs):
+        import sys
+        print >> sys.stderr, self.get_template_names()
+        context = super(UserListView, self).get_context_data(**kwargs)
+        return context

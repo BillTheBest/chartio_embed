@@ -2,30 +2,32 @@
 {% load static %}{% load i18n %}
 {% load avatar_tags %}
 
-{% block title %}All Titles{% endblock %}
+{% block title %}Documentation{% endblock %}
 
 {% block content %}
 
 <div class="container">
-    
   <div class="row">
     <div class="col-xs-12">
-      <h2>Users</h2>
+      <h2>Titles</h2>
     </div>
   </div>
 
   <div class="row">
     <div class="col-lg-12">
       <div class="list-group">
-          {% for user in user_list %}
-            <a href="{% url 'users:detail' user.username %}" class="list-group-item">
-              <h4 class="list-group-item-heading">{% avatar user %} {{ user.username }}</h4>
-              <p class="list-group-item-text">{{ maker.tagline }}</p>
+          {% for chart in chart_list %}
+          <a href="{% url 'charts:detail' chart.title %}" class="list-group-item">
+              <p class="list-group-item-text">{{ chart.title }}</p>
             </a>
           {% endfor %}
-        
       </div>
     </div>
+  </div>
+
+  <div>
+  	<h3>The combined data for all documentation titles</h3>
+    <!-- embed the chartio iframe here -->
   </div>
 
 </div>

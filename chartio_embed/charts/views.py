@@ -9,28 +9,26 @@ from django.views.generic import ListView
 # Only authenticated users can access views using this.
 from braces.views import LoginRequiredMixin
 
+from .models import Chart
+
 class ChartDetailView(LoginRequiredMixin, DetailView):
 
-    # def get_template_names(self):
-    #     ['Chart_detail.html']
+    model = Chart
 
-    def get_queryset(self):
-        []
+    slug_field = "title"
+    slug_url_kwarg = "title"
 
     def get_context_data(self, **kwargs):
         context = super(ChartDetailView, self).get_context_data(**kwargs)
-        context['data'] = 'details'
+
+        # Add jwt with single title to context here.
         return context
 
 class ChartListView(LoginRequiredMixin, ListView):
-
-    # def get_template_names(self):
-    #     ['Chart_list']
-
-    def get_queryset(self):
-        []
+    model = Chart
 
     def get_context_data(self, **kwargs):
         context = super(ChartListView, self).get_context_data(**kwargs)
-        context['data'] = 'list'
+
+        # Add jwt with all titles to context here.
         return context
