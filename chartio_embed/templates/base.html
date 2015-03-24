@@ -37,8 +37,6 @@
       <div class="container">
         <a class="navbar-brand" href="/">chartio_embed</a>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'charts:list' %}">Charts</a></li>
 
           {% if request.user.is_authenticated %}
